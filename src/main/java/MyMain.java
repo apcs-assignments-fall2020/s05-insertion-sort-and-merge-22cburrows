@@ -1,11 +1,20 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MyMain {
 
     // Sorts the ArrayList using insertion sort
     public static ArrayList<Integer> insertionSort(ArrayList<Integer> list) {
-        // YOUR CODE HERE
-        return null;
+        for (int i = 1; i < list.size(); i++){
+            int num = list.get(i);
+            int x = i - 1;
+            while ((x > -1) && (list.get(x).compareTo(num) == 1)){
+                list.set(x + 1, list.get(x));
+                x--;
+            }
+            list.set(x + 1, num);
+        }
+        return list;
     }
 
      // Merges two sorted arrays into one large combined
@@ -41,6 +50,11 @@ public class MyMain {
     }
 
     public static void main(String[] args) {
-        // You can test your code here
+        ArrayList<Integer> list = new ArrayList<Integer>(Arrays.asList(new Integer[] {1, 2, 10, 9, 5, 4, 7, 18, 3}));
+        System.out.println(Arrays.asList(insertionSort(list)));
+
+        int[] arr1 = {-4, 5, 10, 8};
+        int[] arr2 = {-5, -1, 11, 20};
+        System.out.println(Arrays.toString(merge(arr1, arr2)));
     }
 }
